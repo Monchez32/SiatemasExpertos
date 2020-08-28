@@ -9,24 +9,14 @@ def clasificar(parametro1, parametro2, parametro3):
             df.loc[i, parametro3] = 'alto'
         else:
             df.loc[i, parametro3] = 'bajo'
-    resultado = df.groupby(parametro3).quality.mean()
-    return print (resultado)
-
-#Aca se realiza la mediana y se asigna a una variable 
-Malcohol = df.alcohol.median()
-MpH = df.pH.median()
-MResidualSugar = df.residual_sugar.median()
-MCitricAcid = df.citric_acid.median()
-
-#Asigancion de nombres 
-alcohol = 'alcohol'
-ph = 'Ph'
-residualSugar= 'residual sugar'
-citricAcid = 'citric acid'
+    return print (df.groupby(parametro3).quality.mean())
 
 #Se envian las variables a la funcion clasificar 
-ResultadoAlcohol = clasificar(Malcohol, df.alcohol, alcohol)
-ResultadoPh = clasificar(MpH, df.pH, ph)
-ResultadoResidual_sugar = clasificar(MResidualSugar, df.residual_sugar, residualSugar)
-RresultadoCitric_acid = clasificar(MCitricAcid, df.citric_acid, citricAcid)
+Resultado_Alcohol = clasificar(df.alcohol.median(), df.alcohol, 'alcohol')
+Resultado_Ph = clasificar(df.pH.median(), df.pH, 'ph')
+Resultado_Residual_sugar = clasificar(df.residual_sugar.median(),
+                                     df.residual_sugar, 'residualSugar')
+Rresultado_Citric_acid = clasificar(df.citric_acid.median(), df.citric_acid,
+                                   'citricAcid')
+
 
